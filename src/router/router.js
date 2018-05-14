@@ -1,7 +1,8 @@
 import React from 'react';
-import {Route, Switch, Link} from 'react-router-dom';
+import {Route, Switch, Link,matchPath} from 'react-router-dom';
 import Home from '../pages/Home/Home';
 import Userslist from '../pages/Users/Userlist';
+import UsersAdd from '../pages/Users/UserAdd';
 // import LazyLoad from '../components/Loading/Loading'
 // const SubMenu = Menu;
 // const { Sider } = Layout;
@@ -10,6 +11,16 @@ const SubMenu = Menu.SubMenu;
 
 
 export class Submenus extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+        };
+    }
+
+    componentDidMount() {
+        console.log(matchPath)
+    }
+
     render() {
         return (
             <Menu
@@ -23,6 +34,7 @@ export class Submenus extends React.Component {
                 </SubMenu>
                 <SubMenu key="sub2" title={<span><Icon type="user" />用户管理</span>}>
                     <Menu.Item key="2"><Link to="/userslist">用户列表</Link></Menu.Item>
+                    {/* <Menu.Item key="3"><Link to="/usersAdd">用户列表</Link></Menu.Item> */}
                 </SubMenu>
             </Menu>
         )
@@ -34,6 +46,7 @@ export class Contentbody extends React.Component {
             <Switch>
                 <Route exact path="/" component={Home}/>
                 <Route path="/userslist" component={Userslist}/>
+                <Route path="/usersAdd" component={UsersAdd}/>
             </Switch>
             )
     }

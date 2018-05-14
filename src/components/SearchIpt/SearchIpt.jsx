@@ -16,7 +16,13 @@ export class Labinput extends Component {
 }
 export class SearchBtn extends Component{
   render(){
-    return(<Button type="primary" icon="search">Search</Button>)
+    return(<Button className='mg_R30' type="primary" icon="search">Search</Button>)
+  }
+}
+
+export class AddnewBtn extends Component{
+  render(){
+    return(<Button className='mg_R30' type="primary" icon="plus">Add New</Button>)
   }
 }
 
@@ -37,6 +43,7 @@ export class Labselect extends Component {
     );
     return (
       <label className='searchlab'>
+        {/* <select><option>男</option></select> */}
         {this.props.labtext}：
           <Dropdown.Button overlay={menu}>
             Sex

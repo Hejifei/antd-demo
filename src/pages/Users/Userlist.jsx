@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import { Layout,Breadcrumb,Table } from 'antd';
+import {Link} from 'react-router-dom';
 import reqwest from 'reqwest';
-import {Labinput,SearchBtn,Labselect,LabinputDate} from '../../components/SearchIpt/SearchIpt';
+import {Labinput,SearchBtn,AddnewBtn,Labselect,LabinputDate} from '../../components/SearchIpt/SearchIpt';
 import TableEdit from '../../components/TableEdit/TableEdit';
 
 
@@ -67,13 +68,11 @@ export default class Home extends Component {
             pagination,
           });
         });
-      }
+    }
 
-
-
-      componentDidMount() {
+    componentDidMount() {
         this.fetch();
-      }
+    }
     render() {
         const dataSource = [{
             key: '1',
@@ -125,7 +124,7 @@ export default class Home extends Component {
             <Layout className='ContentLayoutC'> 
                 <Breadcrumb className='BreadcrumbC'>
                     <Breadcrumb.Item>用户管理</Breadcrumb.Item>
-                    <Breadcrumb.Item><a href="/userslist">用户列表</a></Breadcrumb.Item>
+                    <Breadcrumb.Item><Link to="/userslist">用户列表</Link></Breadcrumb.Item>
                 </Breadcrumb>
                 <Content className='Contentstyle'>
                     <div>
@@ -134,7 +133,7 @@ export default class Home extends Component {
                         <Labselect labtext={'性别'} />
                         <LabinputDate labtext={'注册日期'} iptid={'phone'} plchold={'Phone Number'}/>
                         <SearchBtn />
-                        
+                        <Link to="/usersAdd"><AddnewBtn /></Link>
                     </div>
                     <Table 
                         dataSource={dataSource} 
