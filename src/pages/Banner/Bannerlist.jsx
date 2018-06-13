@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { Layout,Breadcrumb,Table } from 'antd';
 import {Link} from 'react-router-dom';
 import reqwest from 'reqwest';
+import PublicFun from '../../components/publicFun/publicFun';
 import {AddnewBtn} from '../../components/SearchIpt/SearchIpt';
 import TableEdit from '../../components/TableEdit/TableEdit';
 
@@ -71,6 +72,7 @@ export default class Home extends Component {
     }
 
     componentDidMount() {
+        console.log(PublicFun.url)
         this.fetch();
     }
     render() {
@@ -102,7 +104,7 @@ export default class Home extends Component {
             title: '图片',
             dataIndex: 'src',
             key: 'src',
-            render:text=><img src={text} />,
+            render:text=><img src={text} alt='banner图' />,
             className:'tablebanner',
             width: '25%',
         }, {
@@ -125,17 +127,12 @@ export default class Home extends Component {
         return (
             <Layout className='ContentLayoutC'> 
                 <Breadcrumb className='BreadcrumbC'>
-                    <Breadcrumb.Item>轮播管理</Breadcrumb.Item>
+                    <Breadcrumb.Item>网站管理</Breadcrumb.Item>
                     <Breadcrumb.Item><Link to="/userslist">轮播列表</Link></Breadcrumb.Item>
                 </Breadcrumb>
                 <Content className='Contentstyle'>
                     <div>
-                        {/* <Labinput labtext={'用户名'} iptid={'username'} plchold={'User Name'}/>
-                        <Labinput labtext={'手机号'} iptid={'phone'} plchold={'Phone Number'}/>
-                        <Labselect labtext={'性别'} />
-                        <LabinputDate labtext={'注册日期'} iptid={'phone'} plchold={'Phone Number'}/> */}
-                        {/* <SearchBtn /> */}
-                        <Link to="/usersAdd"><AddnewBtn /></Link>
+                        <Link to="/bannerAdd"><AddnewBtn /></Link>
                     </div>
                     <Table 
                         dataSource={dataSource} 

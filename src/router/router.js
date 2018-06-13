@@ -6,10 +6,11 @@ import Home from '../pages/Home/Home';
 import Userslist from '../pages/Users/Userlist';
 import UsersAdd from '../pages/Users/UserAdd';
 import Bannerlist from '../pages/Banner/Bannerlist';
+import BannerAdd from '../pages/Banner/BannerAdd';
 // import LazyLoad from '../components/Loading/Loading'
 // const SubMenu = Menu;
+import { Menu, Icon} from 'antd';
 // const { Sider } = Layout;
-import { Menu, Icon } from 'antd';
 const SubMenu = Menu.SubMenu;
 
 
@@ -46,25 +47,26 @@ export class Submenus extends React.Component {
 export class MyRouter extends React.Component {
     render() {
         return (
-            <div>
+            // <div>
                 <Router>
                     <Switch>
                         <Route path="/login"  component={Login}/>
                         <Route path="/" component={HtLayout} />
                     </Switch>
                 </Router>
-            </div>
+            // </div>
         )
     }
 }
 export class Contentbody extends React.Component {
     render() {
         return (
-            <div>
+            <div>  
                 <Route exact path="/" component={Home}/>
                 <Route path="/userslist" component={Userslist}/>
                 <Route path="/usersAdd" component={UsersAdd}/>
                 <Route path="/bannerlist" component={Bannerlist}/>
+                <Route path="/bannerAdd" component={BannerAdd}/>
             </div>
             )
     }
