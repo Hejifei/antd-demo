@@ -1,8 +1,11 @@
 import React from 'react';
-import {Route, Switch, Link,matchPath} from 'react-router-dom';
+import {BrowserRouter as Router,Route, Switch, Link} from 'react-router-dom';
+import HtLayout from '../components/HtLayout/Layout';
+import Login from '../pages/Login/Login';
 import Home from '../pages/Home/Home';
 import Userslist from '../pages/Users/Userlist';
 import UsersAdd from '../pages/Users/UserAdd';
+import Bannerlist from '../pages/Banner/Bannerlist';
 // import LazyLoad from '../components/Loading/Loading'
 // const SubMenu = Menu;
 // const { Sider } = Layout;
@@ -16,9 +19,7 @@ export class Submenus extends React.Component {
         this.state = {
         };
     }
-
     componentDidMount() {
-        console.log(matchPath)
     }
 
     render() {
@@ -31,23 +32,40 @@ export class Submenus extends React.Component {
             >
                 <SubMenu key="sub1" title={<span><Icon type="laptop" />首页</span>}>
                     <Menu.Item key="1"><Link to="/">首页</Link></Menu.Item>
+
                 </SubMenu>
                 <SubMenu key="sub2" title={<span><Icon type="user" />用户管理</span>}>
-                    <Menu.Item key="2"><Link to="/userslist">用户列表</Link></Menu.Item>
+                    <Menu.Item key="5"><Link to="/userslist">用户列表</Link></Menu.Item>
+                    <Menu.Item key="6"><Link to="/bannerlist">轮播列表</Link></Menu.Item>
                     {/* <Menu.Item key="3"><Link to="/usersAdd">用户列表</Link></Menu.Item> */}
                 </SubMenu>
             </Menu>
         )
     }
 }
+export class MyRouter extends React.Component {
+    render() {
+        return (
+            <div>
+                <Router>
+                    <Switch>
+                        <Route path="/login"  component={Login}/>
+                        <Route path="/" component={HtLayout} />
+                    </Switch>
+                </Router>
+            </div>
+        )
+    }
+}
 export class Contentbody extends React.Component {
     render() {
         return (
-            <Switch>
+            <div>
                 <Route exact path="/" component={Home}/>
                 <Route path="/userslist" component={Userslist}/>
                 <Route path="/usersAdd" component={UsersAdd}/>
-            </Switch>
+                <Route path="/bannerlist" component={Bannerlist}/>
+            </div>
             )
     }
 }

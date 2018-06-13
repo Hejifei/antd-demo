@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Layout } from 'antd';
 import './Layout.css';
-import {BrowserRouter as Router} from 'react-router-dom';
+// import {BrowserRouter as Router} from 'react-router-dom';
 import {Submenus,Contentbody} from '../../router/router'
 
 
@@ -13,7 +13,7 @@ class HtLayout extends Component {
     
   render() {
     return (
-        <Router>
+        // <Router>
             <Layout>
                 <Header className="header">
                     <div className="logo" />
@@ -62,7 +62,10 @@ class HtLayout extends Component {
                 <Route path="/" exact component={Home} />
                 <Route path="/userslist" component={Userlist} />
             </Switch> */}
-            <Contentbody />
+            <div style={{width:'100%'}}>
+                <Contentbody />
+            </div>
+            
             {/* <Layout style={{ padding: '0 24px 24px' }}> */}
                     
                 {/* 面包屑 */}
@@ -75,7 +78,8 @@ class HtLayout extends Component {
                 </Content> */}
             {/* </Layout> */}
             </Layout>
-        </Layout></Router>
+        </Layout>
+        // </Router>
     );
   }
 }
