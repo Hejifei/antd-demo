@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Layout, Row, Col,Menu, Dropdown, Icon  } from 'antd';
 import './Layout.css';
+import {Link} from 'react-router-dom';
 // import {BrowserRouter as Router} from 'react-router-dom';
 import {Submenus,Contentbody} from '../../router/router'
 
@@ -15,7 +16,7 @@ class HtLayout extends Component {
     const menu = (
         <Menu>
           <Menu.Item key="0">
-            <a><Icon type="edit" /> 密码修改</a>
+            <Link to="/passwordReset"><Icon type="edit" /> 密码修改</Link>
           </Menu.Item>
           <Menu.Divider />
           <Menu.Item key="1">
@@ -37,7 +38,7 @@ class HtLayout extends Component {
                         <Col span={6}></Col>
                         <Col span={6} style={{textAlign:'right'}}>
                             <Dropdown overlay={menu} placement="bottomRight" trigger={['click']}>
-                                <a className="ant-dropdown-link" href="#">
+                                <a className="ant-dropdown-link">
                                     账户管理 <Icon type="down" />
                                 </a>
                             </Dropdown>
@@ -45,10 +46,10 @@ class HtLayout extends Component {
                     </Row>
                 </Header>
             <Layout>
-            <Sider width={200} style={{ background: '#fff' }}>   
-                <Submenus />
-            </Sider>
-            <Contentbody />
+                <Sider width={200} style={{ background: '#fff' }}>   
+                    <Submenus />
+                </Sider>
+                <Contentbody />
             </Layout>
         </Layout>
         // </Router>

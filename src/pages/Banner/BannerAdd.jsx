@@ -24,21 +24,6 @@ class RegistrationForm extends React.Component {
       const value = e.target.value;
       this.setState({ confirmDirty: this.state.confirmDirty || !!value });
     }
-    compareToFirstPassword = (rule, value, callback) => {
-      const form = this.props.form;
-      if (value && value !== form.getFieldValue('password')) {
-        callback('Two passwords that you enter is inconsistent!');
-      } else {
-        callback();
-      }
-    }
-    validateToNextPassword = (rule, value, callback) => {
-      const form = this.props.form;
-      if (value && this.state.confirmDirty) {
-        form.validateFields(['confirm'], { force: true });
-      }
-      callback();
-    }
     normFile = (e) => {
         console.log('Upload event:', e);
         if (Array.isArray(e)) {
@@ -111,9 +96,9 @@ class RegistrationForm extends React.Component {
                 label="排序"
                 >
                 {getFieldDecorator('sort', {
-                // rules: [ {
-                //     required: true, message: 'Please input your sort!',
-                // }],
+                rules: [ {
+                    required: true, message: 'Please input your sort!',
+                }],
                 })(
                 <Input />
                 )}
