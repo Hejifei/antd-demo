@@ -4,14 +4,12 @@ import './Layout.css';
 import {Link} from 'react-router-dom';
 // import {BrowserRouter as Router} from 'react-router-dom';
 import {Submenus,Contentbody} from '../../router/router'
-
-
-
+import {WebState} from '../../MobX/webState';
 const { Header, Sider } = Layout;
-
-
 class HtLayout extends Component {
-    
+    constructor(props) {
+        super(props);
+    }
   render() {
     const menu = (
         <Menu>
@@ -45,17 +43,16 @@ class HtLayout extends Component {
                         </Col>
                     </Row>
                 </Header>
-            <Layout>
-                <Sider width={200} style={{ background: '#fff' }}>   
-                    <Submenus />
-                </Sider>
-                <Contentbody />
+                <Layout>
+                    {this.props.children}
+                    {/* <Sider width={200} style={{ background: '#fff' }}>   
+                        <Submenus/>
+                    </Sider>
+                    <Contentbody /> */}
+                </Layout>
             </Layout>
-        </Layout>
         // </Router>
     );
   }
 }
-
-
 export default HtLayout;

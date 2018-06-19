@@ -1,12 +1,14 @@
-import React, {Component} from 'react';
+
+import {WebState} from '../../MobX/webState';
 import {observer} from 'mobx-react';
-import WebState from '../../MobX/webState';
+import React, {Component} from 'react';
+
 
 @observer
 class TimerView extends React.Component {
     render() {
         return (<button onClick={this.onReset.bind(this)}>
-                Seconds passed: {this.props.appState.timer}
+                Seconds passed: {this.props.WebState.timer}
             </button>);
     }
 

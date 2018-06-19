@@ -1,7 +1,8 @@
-import {observable} from 'mobx';
+import {action,observable} from 'mobx';
 
 var WebState = observable({
-    timer: 0
+    timer: 0,
+    Url:''
 });
 
 WebState.resetTimer = action(function reset() {
@@ -12,4 +13,8 @@ setInterval(action(function tick() {
     WebState.timer += 1;
 }), 1000);
 
-export default WebState;
+let state ={
+    Url:{}
+}
+
+export {WebState,state};
