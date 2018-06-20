@@ -43,7 +43,10 @@ export class Submenus extends React.Component {
                         {'url':'/userslist','name':'用户列表'}
                     ]
                 }
-            ]
+            ],
+            defaultOpenKeysVal:[],
+            defaultSelectedKeysVal:[],
+            temp:''
         };
         this.onClick=this.onClick.bind(this);
         this.onDeselect=this.onDeselect.bind(this);
@@ -66,48 +69,38 @@ export class Submenus extends React.Component {
     }
     componentWillMount() {
         console.log(WebState.Url)
-        // console.log(this.props)
     }
-    // componentWillReact(){
-    //     console.log('componentWillReact')
-    //     console.log(WebState.Url)
-    // }
-    // componentWillReceiveProps(nextProps){
-    //     console.log(WebState.Url)
-    // }
 
     render() {
-        console.log(WebState.Url)
-        let url = WebState.Url;
+        let url = WebState.Url ? WebState.Url : '';
         const SMenuList = this.state.SMenuList;
-        let defaultOpenKeysVal = [];
-        let defaultSelectedKeysVal = [];
-        // let temp='';
+        // this.state.temp='';
         SMenuList.map((val,index)=>{
+            // this.state.temp +=`
+            //     <SubMenu key="${val.SubMenu}" title={<span><Icon type="${val.Icon_type}" />${val.title}</span>}>
+            //     `
             val.sons.map((valson,indexson)=>{
+                // this.state.temp +=`
+                //     <Menu.Item key="${val.SubMenu+(indexson+1)}">
+                //         <NavLink activeClassName='active' to="${valson.url}">${valson.name}</NavLink>
+                //     </Menu.Item>
+                // `
                 if(url.indexOf(valson.url) !== -1){
-                    defaultOpenKeysVal.push(val.SubMenu)
-                    defaultSelectedKeysVal.push(val.SubMenu + (indexson+1))
+                    this.state.defaultOpenKeysVal.push(val.SubMenu)
+                    this.state.defaultSelectedKeysVal.push(val.SubMenu + (indexson+1))
                 }
-                return ;
+                return '';
             })
-            return ;
+            // this.state.temp +=`</SubMenu>`
+            return '';
         })
-        
-        console.log(defaultOpenKeysVal)
-        // console.log(typeof(defaultOpenKeysVal))
-        // console.log(['sub1'])
-        console.log(defaultSelectedKeysVal)
-        // console.log(['sub11'])
-        // console.log(temp)
         return (
             <Menu
                 mode="inline"
-                defaultSelectedKeys={defaultSelectedKeysVal}
-                defaultOpenKeys={defaultOpenKeysVal}
+                defaultSelectedKeys={this.state.defaultSelectedKeysVal}
+                defaultOpenKeys={this.state.defaultOpenKeysVal}
                 style={{ height: '100%', borderRight: 0 }}
             >
-                    
                 <SubMenu key="sub1" title={<span><Icon type="laptop" />网站管理</span>}>
                     <Menu.Item key="sub11">
                         <NavLink activeClassName='active' to="/index">首页</NavLink>

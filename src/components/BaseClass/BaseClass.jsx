@@ -9,9 +9,11 @@ class BaseClass extends React.Component {
         this.PublicFun=PublicFun
     }
     componentWillMount() {
-        
-        WebState.Url = this.props.location.pathname;
-        console.log(WebState.Url)
+        // console.log(this.props)
+        if(this.props.location){
+            WebState.Url = this.props.location.pathname;
+        }
+        // console.log(WebState.Url)
     }
     // componentDidUpdate(){
     //     console.log(this.props.location.pathname)
