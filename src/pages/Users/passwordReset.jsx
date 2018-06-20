@@ -1,13 +1,13 @@
 import React, {Component} from 'react';
 import { Layout,Breadcrumb } from 'antd';
 import {Link} from 'react-router-dom';
-
+import BaseClass from '../../components/BaseClass/BaseClass';
 import { Form, Input, Button } from 'antd';
 const FormItem = Form.Item;
 
 const { Content } = Layout;
   
-class RegistrationForm extends React.Component {
+class RegistrationForm extends BaseClass {
     state = {
       confirmDirty: false,
       autoCompleteResult: [],
@@ -141,7 +141,7 @@ class RegistrationForm extends React.Component {
   
 const WrappedRegistrationForm = Form.create()(RegistrationForm);
 
-export default class Home extends Component {
+export default class PasswordReset extends Component {
     constructor(props) {
         super(props);
         this.state = {

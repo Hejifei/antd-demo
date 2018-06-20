@@ -1,13 +1,13 @@
 import React, {Component} from 'react';
 import { Layout,Breadcrumb } from 'antd';
 import {Link} from 'react-router-dom';
-
+import BaseClass from '../../components/BaseClass/BaseClass';
 import { Form, Input, Icon, Button,Upload } from 'antd';
 const FormItem = Form.Item;
 
 const { Content } = Layout;
   
-class RegistrationForm extends React.Component {
+class RegistrationForm extends BaseClass {
     state = {
       confirmDirty: false,
       autoCompleteResult: [],

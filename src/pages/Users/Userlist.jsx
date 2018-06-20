@@ -1,16 +1,16 @@
-import React, {Component} from 'react';
+import React from 'react';
 import { Layout,Breadcrumb,Table } from 'antd';
 import {Link} from 'react-router-dom';
 import reqwest from 'reqwest';
 import {Labinput,SearchBtn,AddnewBtn,Labselect,LabinputDate} from '../../components/SearchIpt/SearchIpt';
 import TableEdit from '../../components/TableEdit/TableEdit';
-
+import BaseClass from '../../components/BaseClass/BaseClass';
 
 const { Content } = Layout;
 
 
 
-export default class Home extends Component {
+export default class Userlist extends BaseClass {
     constructor(props) {
         super(props);
         this.state = {
@@ -47,7 +47,7 @@ export default class Home extends Component {
 
     // ajax
     fetch = (params = {}) => {
-        console.log('params:', params);
+        // console.log('params:', params);
         this.setState({ loading: true });
         reqwest({
           url: 'https://randomuser.me/api',

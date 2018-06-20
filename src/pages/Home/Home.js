@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import BaseClass from '../../components/BaseClass/BaseClass';
 import { Layout,Breadcrumb,Timeline } from 'antd';
 const { Content } = Layout;
@@ -7,7 +7,6 @@ export default class Home extends BaseClass {
     state = {
         reverse: false,
     }
-
     render() {
         // console.log(this.props.location.pathname)
         return (

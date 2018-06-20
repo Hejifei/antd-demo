@@ -1,17 +1,17 @@
-import React, {Component} from 'react';
+import React from 'react';
 import { Layout,Breadcrumb,Table } from 'antd';
 import {Link} from 'react-router-dom';
 import reqwest from 'reqwest';
-import PublicFun from '../../components/publicFun/publicFun';
+// import PublicFun from '../../components/publicFun/publicFun';
 import {AddnewBtn} from '../../components/SearchIpt/SearchIpt';
 import TableEdit from '../../components/TableEdit/TableEdit';
-
+import BaseClass from '../../components/BaseClass/BaseClass';
 
 const { Content } = Layout;
 
 
 
-export default class Home extends Component {
+export default class Bannerlist extends BaseClass {
     constructor(props) {
         super(props);
         this.state = {
@@ -22,7 +22,6 @@ export default class Home extends Component {
         this.UserDelete = this.UserDelete.bind(this);
         this.handleTableChange = this.handleTableChange.bind(this);
     }
-
     UserDelete(id){
         alert('id='+id);
     }
@@ -72,7 +71,8 @@ export default class Home extends Component {
     }
 
     componentDidMount() {
-        console.log(PublicFun.url)
+        // console.log(this.PublicFun.url)
+        // console.log(PublicFun.url)
         this.fetch();
     }
     render() {

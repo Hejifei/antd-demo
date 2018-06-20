@@ -18,10 +18,32 @@ import { Menu, Icon,Layout} from 'antd';
 const { Sider } = Layout;
 const SubMenu = Menu.SubMenu;
 
+@observer
 export class Submenus extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            date: new Date(),
+            SMenuList:[
+                {
+                    'SubMenu':'sub1',
+                    'Icon_type':'laptop',
+                    'title':'网站管理',
+                    'sons':[
+                        {'url':'/index','name':'首页'},
+                        {'url':'/bannerlist','name':'轮播列表'},
+                        {'url':'/designTypelist','name':'设计类型'},
+                    ]
+                },
+                {
+                    'SubMenu':'sub2',
+                    'Icon_type':'user',
+                    'title':'用户管理',
+                    'sons':[
+                        {'url':'/userslist','name':'用户列表'}
+                    ]
+                }
+            ]
         };
         this.onClick=this.onClick.bind(this);
         this.onDeselect=this.onDeselect.bind(this);
@@ -42,34 +64,63 @@ export class Submenus extends React.Component {
     onTitleClick(key, domEvent){
         console.log(key, domEvent)
     }
-    componentDidMount() {
+    componentWillMount() {
         console.log(WebState.Url)
         // console.log(this.props)
     }
+    // componentWillReact(){
+    //     console.log('componentWillReact')
+    //     console.log(WebState.Url)
+    // }
+    // componentWillReceiveProps(nextProps){
+    //     console.log(WebState.Url)
+    // }
+
     render() {
+        console.log(WebState.Url)
+        let url = WebState.Url;
+        const SMenuList = this.state.SMenuList;
+        let defaultOpenKeysVal = [];
+        let defaultSelectedKeysVal = [];
+        // let temp='';
+        SMenuList.map((val,index)=>{
+            val.sons.map((valson,indexson)=>{
+                if(url.indexOf(valson.url) !== -1){
+                    defaultOpenKeysVal.push(val.SubMenu)
+                    defaultSelectedKeysVal.push(val.SubMenu + (indexson+1))
+                }
+                return ;
+            })
+            return ;
+        })
+        
+        console.log(defaultOpenKeysVal)
+        // console.log(typeof(defaultOpenKeysVal))
+        // console.log(['sub1'])
+        console.log(defaultSelectedKeysVal)
+        // console.log(['sub11'])
+        // console.log(temp)
         return (
             <Menu
                 mode="inline"
-                // onClick={this.onClick}
-                // onDeselect={this.onDeselect}
-                // onSelect={this.onSelect}
-                defaultSelectedKeys={['1']}
-                defaultOpenKeys={['sub1']}
+                defaultSelectedKeys={defaultSelectedKeysVal}
+                defaultOpenKeys={defaultOpenKeysVal}
                 style={{ height: '100%', borderRight: 0 }}
             >
+                    
                 <SubMenu key="sub1" title={<span><Icon type="laptop" />网站管理</span>}>
-                    <Menu.Item key="1">
-                        <NavLink activeClassName='active' to="/">首页</NavLink>
+                    <Menu.Item key="sub11">
+                        <NavLink activeClassName='active' to="/index">首页</NavLink>
                     </Menu.Item>
-                    <Menu.Item key="2" onTitleClick={this.onTitleClick}>
+                    <Menu.Item key="sub12" onTitleClick={this.onTitleClick}>
                         <NavLink activeClassName='active' to="/bannerlist">轮播列表</NavLink>
                     </Menu.Item>
-                    <Menu.Item key="3">
+                    <Menu.Item key="sub13">
                         <NavLink activeClassName='active' to="/designTypelist">设计类型</NavLink>
                     </Menu.Item>
                 </SubMenu>
                 <SubMenu key="sub2" title={<span><Icon type="user" />用户管理</span>}>
-                    <Menu.Item key="5"><NavLink activeClassName='active' to="/userslist">用户列表</NavLink></Menu.Item>
+                    <Menu.Item key="sub21"><NavLink activeClassName='active' to="/userslist">用户列表</NavLink></Menu.Item>
                 </SubMenu>
             </Menu>
         )
@@ -105,7 +156,7 @@ export class Contentbody extends React.Component {
     render() {
         return (
             <div style={{width:'100%'}}>
-                <Route  exact path="/" component={Home} />
+                <Route  exact path="/index" component={Home} />
                 <Route path="/userslist" component={Userslist} onEnter={MenuEnter('sub2','5')}/>
                 <Route path="/usersAdd" component={UsersAdd} onEnter={MenuEnter('sub2','')}/>
                 <Route path="/passwordReset" component={PasswordReset} onEnter={MenuEnter('','')}/>
@@ -116,11 +167,11 @@ export class Contentbody extends React.Component {
         )
     }
 }
-class BaseRoute extends React.Component {
-    componentDidMount() {
-        this.props.onRouteEnter(this.props.match); // 这里你可以根据需要传更多信息
-    }
-}
+// class BaseRoute extends React.Component {
+//     componentDidMount() {
+//         this.props.onRouteEnter(this.props.match); // 这里你可以根据需要传更多信息
+//     }
+// }
 let MenuEnter=(defaultSelectedKeys,defaultOpenKeys)=>{
     // WebState.Url = [defaultSelectedKeys,defaultOpenKeys];
     // console.log(WebState.Url)

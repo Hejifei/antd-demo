@@ -1,16 +1,16 @@
-import React, {Component} from 'react';
+import React from 'react';
 import { Layout,Breadcrumb,Table } from 'antd';
 import {Link} from 'react-router-dom';
 import reqwest from 'reqwest';
 import {AddnewBtn} from '../../components/SearchIpt/SearchIpt';
 import TableEdit from '../../components/TableEdit/TableEdit';
-
+import BaseClass from '../../components/BaseClass/BaseClass';
 
 const { Content } = Layout;
 
 
 
-export default class Home extends Component {
+export default class Home extends BaseClass {
     constructor(props) {
         super(props);
         this.state = {

@@ -2,14 +2,15 @@ import React, { Component } from 'react';
 import { Layout, Row, Col,Menu, Dropdown, Icon  } from 'antd';
 import './Layout.css';
 import {Link} from 'react-router-dom';
+
 // import {BrowserRouter as Router} from 'react-router-dom';
-import {Submenus,Contentbody} from '../../router/router'
-import {WebState} from '../../MobX/webState';
-const { Header, Sider } = Layout;
+// import {Submenus,Contentbody} from '../../router/router'
+// import {WebState} from '../../MobX/webState';
+const { Header } = Layout;
 class HtLayout extends Component {
-    constructor(props) {
-        super(props);
-    }
+    // constructor(props) {
+    //     super(props);
+    // }
   render() {
     const menu = (
         <Menu>

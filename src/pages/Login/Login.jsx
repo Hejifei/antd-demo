@@ -3,7 +3,6 @@ import {WebState} from '../../MobX/webState';
 import {observer} from 'mobx-react';
 import React, {Component} from 'react';
 
-
 @observer
 class TimerView extends React.Component {
     render() {
@@ -17,10 +16,13 @@ class TimerView extends React.Component {
     }
 };
 
+
 export default class Home extends Component {
     render() {
         return (
-            <TimerView WebState={WebState} />
+            <div>
+                <TimerView WebState={WebState} />
+            </div>
         )
     }
 }
