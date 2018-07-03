@@ -48,24 +48,6 @@ export class Submenus extends React.Component {
             defaultSelectedKeysVal:[],
             temp:''
         };
-        this.onClick=this.onClick.bind(this);
-        this.onDeselect=this.onDeselect.bind(this);
-        this.onSelect=this.onSelect.bind(this);
-        this.onTitleClick = this.onTitleClick.bind(this)
-    }
-    onClick(item, key, keyPath ){
-        console.log(item)
-        console.log(key)
-        console.log(keyPath )
-    }
-    onDeselect(item, key, selectedKeys  ){
-        console.log(item, key, selectedKeys  )
-    }
-    onSelect(item, key, selectedKeys  ){
-        console.log(item, key, selectedKeys )
-    }
-    onTitleClick(key, domEvent){
-        console.log(key, domEvent)
     }
     componentWillMount() {
         console.log(WebState.Url)
@@ -150,6 +132,7 @@ export class Contentbody extends React.Component {
         return (
             <div style={{width:'100%'}}>
                 <Route  exact path="/index" component={Home} />
+                {/* <Redirect from='/' to='/index' /> */}
                 <Route path="/userslist" component={Userslist} onEnter={MenuEnter('sub2','5')}/>
                 <Route path="/usersAdd" component={UsersAdd} onEnter={MenuEnter('sub2','')}/>
                 <Route path="/passwordReset" component={PasswordReset} onEnter={MenuEnter('','')}/>

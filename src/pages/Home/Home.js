@@ -5,7 +5,7 @@ const { Content } = Layout;
 
 export default class Home extends BaseClass {
     state = {
-        reverse: false,
+        // reverse: false,
     }
     render() {
         // console.log(this.props.location.pathname)
@@ -19,7 +19,9 @@ export default class Home extends BaseClass {
                 <Content className='Contentstyle'>
                     {/* 时间轴 */}
                     <div>
-                        <Timeline pending="To be continued..." reverse={this.state.reverse}>
+                        <Timeline pending="To be continued..." 
+                            // reverse={this.state.reverse}
+                        >
                             <Timeline.Item>Create a services site 2015-09-01</Timeline.Item>
                             <Timeline.Item>Solve initial network problems 2015-09-01</Timeline.Item>
                             <Timeline.Item>Technical testing 2015-09-01</Timeline.Item>
